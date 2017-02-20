@@ -2,16 +2,47 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>Add new book</title>
+    <!-- include bootstrap css -->
+    <link rel="stylesheet" href="./bs/dist/css/bootstrap.min.css">
   </head>
   <body>
-    <h1>Hello World!</h1>
+    <nav class="nav nav-pills">
+      <a class="nav-link active" href="#">Add a book</a>
+      <a class="nav-link" href="#">Admin panel</a>
+      <a class="nav-link disabled" href="#">Games</a>
+    </nav>
+    <div class="container">
+      <div style="margin:20px;">
+          <h1>Add new book to the database.</h1>
+      </div>
+      <form class="new_book" method="post">
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="isbn" class="sr-only">ISBN</label>
+            <input type="text" class="form-control" id="isbn" placeholder="ISBN">
+            <div class="btn-group">
+              <button type="button" class="btn btn-secondary">Fetch</button>
+              <button type="button" class="btn btn-secondary">Scan</button>
+            </div>
+          </div>
+        </form>
+        <input type="text" name="acc_no" class="form-control" value="" placeholder="acc_no">
+        <input type="text" name="subject" class="form-control" value="" placeholder="subject">
+        <input type="text" name="name" class="form-control" value="" placeholder="name">
+        <input type="text" name="edition" class="form-control" value="" placeholder="edition">
+        <input type="text" name="publication" class="form-control" value="" placeholder="publication">
+        <input type="text" name="note" rows="5" class="form-control" value="" placeholder="note">
+        <input type="text" name="authors" class="form-control" value="" placeholder="authors">
+        <button type="button" class="btn btn-primary btn-lg">Add</button>
+      </form>
+    </div>
     <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
 
+
+    <!-- include bootstrap js -->
+    <script src="./bs/dist/js/bootstrap.min.js"></script>
+  </body>
   <script>
     // You can also require other files to run in this process
     require('./renderer.js')
