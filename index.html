@@ -6,6 +6,7 @@
     <!-- include bootstrap css -->
     <link rel="stylesheet" href="./bs/dist/css/bootstrap.min.css">
   </head>
+  <script src="js/frontend.js"></script>
   <body>
     <nav class="nav nav-pills">
       <a class="nav-link active" href="#">Add a book</a>
@@ -20,20 +21,20 @@
         <form class="form-inline">
           <div class="form-group">
             <label for="isbn" class="sr-only">ISBN</label>
-            <input type="text" class="form-control" id="isbn" placeholder="ISBN">
+            <input type="text" class="form-control" id="isbn_input" placeholder="ISBN">
             <div class="btn-group">
-              <button type="button" class="btn btn-secondary">Fetch</button>
+              <button onclick="fetch_data_from_isbn(document.getElementById('isbn_input').value)" type="button" class="btn btn-secondary">Fetch</button>
               <button type="button" class="btn btn-secondary">Scan</button>
             </div>
           </div>
         </form>
         <input type="text" name="acc_no" class="form-control" value="" placeholder="acc_no">
-        <input type="text" name="subject" class="form-control" value="" placeholder="subject">
-        <input type="text" name="name" class="form-control" value="" placeholder="name">
+        <input type="text" name="subject" class="form-control" value="" placeholder="subject" id = "subject">
+        <input type="text" name="name" class="form-control" value="" placeholder="name" id = "name">
         <input type="text" name="edition" class="form-control" value="" placeholder="edition">
-        <input type="text" name="publication" class="form-control" value="" placeholder="publication">
+        <input type="text" name="publication" class="form-control" value="" placeholder="publication" id = "publication">
         <input type="text" name="note" rows="5" class="form-control" value="" placeholder="note">
-        <input type="text" name="authors" class="form-control" value="" placeholder="authors">
+        <input type="text" name="authors" class="form-control" value="" placeholder="authors" id = "author">
         <button type="button" class="btn btn-primary btn-lg">Add</button>
       </form>
     </div>
@@ -41,6 +42,7 @@
 
 
     <!-- include bootstrap js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="./bs/dist/js/bootstrap.min.js"></script>
   </body>
   <script>
