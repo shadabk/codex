@@ -60,4 +60,20 @@ function add_book_to_db(ac_no, isbn, title, author, publication, publication_pla
         console.log("book added");
       }
     });
+    save_barcode(ac_no);
+  }
+
+  function save_barcode(acno){
+    var barcode = require('barcode');
+    var bar_data = acno;
+    var code128 = barcode('code128', {
+      data: bar_data,
+      width: 400,
+      height: 100,
+    });
+    var outfile = "./barcodes/" + bar_data + ".png";
+    code128.saveImage(outfile, function (err) {
+        if (err) throw err;
+        console.log('Barcode saved!');
+    });
   }
