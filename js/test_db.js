@@ -23,13 +23,14 @@
       subject : {type : String, required : true},
       page_count : {type : String},
       language : {type : String, default : "English"},
-      shelf : {type : String}
+      shelf : {type : String},
+      price : {type : Number, required : true}
   });
 
   // Now we will convert this schema to model
 var book = mongoose.model('book', BookSchema);
 
-function add_book_to_db(ac_no, isbn, title, author, publication, publication_place, edition_book, publication_date,description, subject, page_count,language,shelf){
+function add_book_to_db(ac_no, isbn, title, author, publication, publication_place, edition_book, publication_date,description, subject, page_count,language,shelf,price){
     var temp = new book({
       accountnumber :ac_no,
       isbn : isbn,
@@ -44,7 +45,8 @@ function add_book_to_db(ac_no, isbn, title, author, publication, publication_pla
       subject :subject,
       page_count : page_count,
       language : language,
-      shelf : shelf
+      shelf : shelf,
+      price : price
     });
     temp.save(function (err) {
       if (err) {
