@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./bs/dist/css/bootstrap.min.css">
   </head>
   <script src="js/frontend.js"></script>
+  <script src="js/test_db.js"></script>
   <body>
     <nav class="nav nav-pills">
       <a class="nav-link active" href="#">Add a book</a>
@@ -23,19 +24,37 @@
             <label for="isbn" class="sr-only">ISBN</label>
             <input type="text" class="form-control" id="isbn_input" placeholder="ISBN">
             <div class="btn-group">
-              <button onclick="fetch_data_from_isbn(document.getElementById('isbn_input').value)" type="button" class="btn btn-secondary">Fetch</button>
+              <button id = "fetch_btn"onclick="fetch_data_from_isbn(document.getElementById('isbn_input').value)"type="button" class="btn btn-secondary">Fetch</button>
               <button type="button" class="btn btn-secondary">Scan</button>
             </div>
           </div>
         </form>
-        <input type="text" name="acc_no" class="form-control" value="" placeholder="acc_no">
-        <input type="text" name="subject" class="form-control" value="" placeholder="subject" id = "subject">
-        <input type="text" name="name" class="form-control" value="" placeholder="name" id = "name">
-        <input type="text" name="edition" class="form-control" value="" placeholder="edition">
-        <input type="text" name="publication" class="form-control" value="" placeholder="publication" id = "publication">
-        <input type="text" name="note" rows="5" class="form-control" value="" placeholder="note">
+        <input type="text" name="acc_no" class="form-control" value="" placeholder="acc_no" id = "ac_no">
+        <input type="text" name="isbn" class="form-control" value="" placeholder="isbn" id = "isbn">
+        <input type="text" name="title" class="form-control" value="" placeholder="name" id = "title">
         <input type="text" name="authors" class="form-control" value="" placeholder="authors" id = "author">
-        <button type="button" class="btn btn-primary btn-lg">Add</button>
+        <input type="text" name="publication" class="form-control" value="" placeholder="publication" id = "publication">
+        <input type="text" name="place of publication" class="form-control" value="" placeholder="place of publication" id = "publication_place">
+        <input type="text" name="edition" class="form-control" value="" id = "edition_book" placeholder="edition">
+        <input type="text" name="date of publication" class="form-control" value="" placeholder="publication date" id = "publication_date">
+        <input type="text" name="description" class="form-control" value="" placeholder="description" id = "description">
+        <input type="text" name="subject" class="form-control" value="" placeholder="subject" id = "subject">
+        <input type="text" name="page count" class="form-control" value="" placeholder="pages" id = "page_count">
+        <input type="text" name="language" class="form-control" value="" placeholder="language" id = "language">
+        <input type="text" name="shelf" class="form-control" value="" placeholder="shelf" id = "shelf">
+
+        <button onclick="add_book_to_db(document.getElementById('ac_no').value,
+                                        document.getElementById('isbn').value,
+                                        document.getElementById('title').value,
+                                        document.getElementById('author').value,
+                                        document.getElementById('publication').value,
+                                        document.getElementById('publication_place').value,
+                                        document.getElementById('edition_book').value,
+                                        document.getElementById('publication_date').value,
+                                        document.getElementById('subject').value,
+                                        document.getElementById('page_count').value,
+                                        document.getElementById('shelf').value)"
+      type="button" class="btn btn-primary btn-lg">Add</button>
       </form>
     </div>
     <!-- All of the Node.js APIs are available in this renderer process. -->
