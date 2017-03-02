@@ -8,11 +8,14 @@ function fetch_data_from_isbn(isbn_input){
     else {
         console.log('Book found ', book);
     }
-    document.getElementById('name').value = book.title ;
-    document.getElementById('publication').value = book.publisher ;
+    document.getElementById('isbn').value = isbn_input ;
+    document.getElementById('title').value = book.title ;
     document.getElementById('author').value = book.authors;
-
+    document.getElementById('publication').value = book.publisher ;
+    // document.getElementById('publication_place').value = book.publishedDate;
+    document.getElementById('publication_date').value = book.publishedDate;
+    document.getElementById('description').value = book.description;
+    document.getElementById('page_count').value = book.pageCount;
+    document.getElementById('language').value = "English";
   });
-  // var name = book.title;
-  /*Displaying the result in html */
 }
