@@ -1,21 +1,4 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1/codex_test1');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  // we're connected!
-  console.log("connected");
-});
-
-var studentSchema = mongoose.Schema({
-
-    mis : {type : String, required : true, unique : true},
-    name : {type : String, required : true},
-    year : {type : String, required : true},
-    branch : {type : String, required : true},
-    email : {type : String, required : true},
-    contact : {type : String, required : true}
-});
 
 // Now we will convert this schema to model
 var student = mongoose.model('student', studentSchema);

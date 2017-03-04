@@ -1,18 +1,4 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1/codex_test1');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  // we're connected!
-  console.log("connected");
-});
-
-var issueSchema = mongoose.Schema({
-    book_ac_no : {type : Number, required : true},
-    mis : {type : String, required : true},
-    date_of_issue : {type : Date, default : Date.now},
-    date_of_return : {type : Date, required : true}
-});
 
 // Now we will convert this schema to model
 var issue = mongoose.model('issue', issueSchema);

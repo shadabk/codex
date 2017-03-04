@@ -17,3 +17,19 @@ var BookSchema = mongoose.Schema({
     shelf : {type : String},
     price : {type : Number, required : true}
 });
+
+var studentSchema = mongoose.Schema({
+    mis : {type : String, required : true, unique : true},
+    name : {type : String, required : true},
+    year : {type : String, required : true},
+    branch : {type : String, required : true},
+    email : {type : String, required : true},
+    contact : {type : String, required : true}
+});
+
+var issueSchema = mongoose.Schema({
+    book_ac_no : {type : Number, required : true},
+    mis : {type : String, required : true},
+    date_of_issue : {type : Date, default : Date.now},
+    date_of_return : {type : Date, required : true}
+});
