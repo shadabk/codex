@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Issue book</title>
+    <!-- include bootstrap css -->
+    <link rel="stylesheet" href="./bs/dist/css/bootstrap.min.css">
+  </head>
+  <script src="js/frontend.js"></script>
+  <script src="js/addbook_db.js"></script>
+  <script src="js/add_student.js"></script>
+
+  <body>
+    <nav class="nav nav-pills">
+      <a class="nav-link active" href="#">Add a book</a>
+      <a class="nav-link" href="#">Admin panel</a>
+      <a class="nav-link disabled" href="#">Games</a>
+    </nav>
+    <div class="container">
+      <div style="margin:20px;">
+          <h1>Add new Student to the database.</h1>
+      </div>
+      <form class="new_book" method="post">
+
+        <input type="text" name="MIS" class="form-control" value="" placeholder="MIS" id = "mis">
+        <input type="text" name="name" class="form-control" value="" placeholder="name" id = "student_name">
+        <input type="text" name="year" class="form-control" value="" placeholder="year" id = "year">
+        <input type="text" name="branch" class="form-control" value="" placeholder="branch" id = "branch">
+        <input type="text" name="email" class="form-control" value="" placeholder="email" id = "email">
+        <input type="text" name="contact" class="form-control" value="" placeholder="contact" id = "contact">
+
+        <button onclick="add_student_to_db(document.getElementById('mis').value,
+                                        document.getElementById('student_name').value,
+                                        document.getElementById('year').value,
+                                        document.getElementById('branch').value,
+                                        document.getElementById('contact').value,
+                                        document.getElementById('email').value)"
+      type="button" class="btn btn-primary btn-lg">Add</button>
+      </form>
+    </div>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+
+
+    <!-- include bootstrap js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./bs/dist/js/bootstrap.min.js"></script>
+  </body>
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+</html>
