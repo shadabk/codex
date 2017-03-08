@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./bs/dist/css/bootstrap.min.css">
   </head>
   <script src="js/schemas.js"></script>
+  <script type="text/javascript" src="./js/print_barcode.js">  </script>
   <body>
     <nav class="nav nav-pills">
       <a class="nav-link" href="./index.html">Add a book</a>
@@ -21,19 +22,18 @@
         </div>
         <input type="text" name="acc_no" value="" id="acc_to_add">
         <button type="button" class="btn btn-primary" onclick="add_to_list()">Add to list</button>
-        <button type="button" class="btn btn-success" onclick="" >Print</button>
+        <button type="button" class="btn btn-success" onclick="send_to_print()" >Print</button>
       </div>
       <div class="container" id="bc_page">
           <!-- rows will get added here dynamically -->
       </div>
     </div>
     <!-- include bootstrap js -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
     <script src="./bs/dist/js/bootstrap.min.js"></script>
   </body>
   <script>
     // You can also require other files to run in this process
     require('./renderer.js')
   </script>
-  <script type="text/javascript" src="./js/print_barcode.js">  </script>
 </html>

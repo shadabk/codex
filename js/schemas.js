@@ -15,7 +15,8 @@ var BookSchema = mongoose.Schema({
     page_count : {type : String},
     language : {type : String, default : "English"},
     shelf : {type : String},
-    price : {type : Number, required : true}
+    price : {type : Number, required : true},
+    bc_enc : {type: String}
 });
 
 var studentSchema = mongoose.Schema({

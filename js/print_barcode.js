@@ -1,4 +1,5 @@
 var bc_arr = [];
+var shelf_arr = [];
 var book = mongoose.model('book', BookSchema);
 
 // adds accountnumber to a js array.
@@ -20,6 +21,7 @@ function add_to_list() {
     }
     else{
       bc_arr.push(acc_no);
+      shelf_arr.push(res[0]["shelf"]);
       console.log(bc_arr);
       ref_bars(res[0]["title"]);
     }
@@ -56,6 +58,7 @@ function ref_bars(title) {
       var ind = this.id.slice(6);
       console.log(ind);
       bc_arr[ind - 1] = -1;
+      shelf_arr[ind - 1] = -1;
     });
     cb.appendChild(ct);
     cb.appendChild(ctxt);
@@ -66,14 +69,133 @@ function ref_bars(title) {
     row.appendChild(csm);
     bcPage.appendChild(row);
 }
-
-// $(document).on("click", "#remove_bc_btn", function (e){
-//   e.preventdefault;
-//   console.log("this yo");
-//   $(this).parent().parent().parent().empty();
-// });
 //
-function remove_bc(arg){
-  console.log("arg");
-  console.log(arg.parentNode.parentNode.id);
+// function send_to_print(){
+//   var dd = {
+//     content: [
+//       {
+//         table: {
+//           body: [
+//
+//           ]
+//         }
+//       }
+//     ],
+//     // a string or { width: number, height: number }
+//     pageSize: 'A4',
+//     // by default we use portrait, you can change it to landscape if you wish
+//     pageOrientation: 'portrait',
+//     // [left, top, right, bottom] or [horizontal, vertical] or just a number for equal margins
+//     pageMargins: [ 40, 60, 40, 60 ],
+//   }
+//   var pos = 0;
+//   for (var i = 0; i < bc_arr.length; i++) {
+//     if (bc_arr[i] != -1) {
+//       pos++;
+//       book.find({accountnumber: bc_arr[i]}, function(err, res) {
+//         if (err) throw err;
+//         // console.log("print "+res);
+//         data = res[0]["bc_enc"];
+//         if(pos % 2 != 0){
+//           dd.content[0].table.body.push([{image: data, width: 150}]);
+//         }
+//         else{
+//           dd.content[0].table.body[this.length-1].push([{image: data, width: 150}]);
+//         }
+//         // dd.content.push({image: data, width: 150});
+//       });
+//     }
+//   }
+//   setTimeout(function(){console.log(dd);},1000);
+// }
+
+function send_to_print(){
+  localStorage.setItem("bcArr", bc_arr);
+  localStorage.setItem("shelfArr", shelf_arr);
+  const electron = require('electron').remote;
+  win = new electron.BrowserWindow({width:400,height:700});
+	win.loadURL(`file://${__dirname}/bill_temp.html`);
+}
+
+function loadimages(){
+  // console.log("bc_arr "+localStorage.getItem("var1"));
+  var bc_arr = localStorage.getItem("bcArr");
+  var shelf_arr = localStorage.getItem("shelfArr");
+  bc_arr = bc_arr.split(",");
+  shelf_arr = shelf_arr.split(",");
+  var md = document.getElementById("main_div");
+  var c = 0;
+  for (var i = 0; i < bc_arr.length; i++) {
+    if (bc_arr[i] != -1) {
+      if(c % 3 == 0){
+        var lgr = document.createElement("div");
+        lgr.className = "list-group row";
+        var li = document.createElement("div");
+        li.className = "list-group-item";
+        li.id = "last_li";
+        var c4 = document.createElement("div");
+        c4.className = "col-4";
+        var image = document.createElement("img");
+        image.src = "./barcodes/"+bc_arr[i]+".png";
+        image.className = "img-fluid";
+        var ac = document.createElement("span");
+        ac.textContent = bc_arr[i];
+        var shelf = document.createElement("span");
+        shelf.textContent = shelf_arr[i];
+        shelf.style = "float:right";
+        c4.appendChild(image);
+        c4.appendChild(ac);
+        c4.appendChild(shelf);
+        li.appendChild(c4);
+        lgr.appendChild(li);
+        md.appendChild(lgr);
+        c++;
+      }
+      else if (c % 3 == 1) {
+        var li = document.getElementById("last_li");
+        var c4 = document.createElement("div");
+        c4.className = "col-4";
+        var image = document.createElement("img");
+        image.src = "./barcodes/"+bc_arr[i]+".png";
+        image.className = "img-fluid";
+        var ac = document.createElement("span");
+        ac.textContent = bc_arr[i];
+        var shelf = document.createElement("span");
+        shelf.textContent = shelf_arr[i];
+        shelf.style = "float:right";
+        c4.appendChild(image);
+        c4.appendChild(ac);
+        c4.appendChild(shelf);
+        li.appendChild(c4);
+        c++;
+      }
+      else if (c % 3 == 2) {
+        var li = document.getElementById("last_li");
+        var c4 = document.createElement("div");
+        c4.className = "col-4";
+        var image = document.createElement("img");
+        image.src = "./barcodes/"+bc_arr[i]+".png";
+        image.className = "img-fluid";
+        var ac = document.createElement("span");
+        ac.textContent = bc_arr[i];
+        var shelf = document.createElement("span");
+        shelf.textContent = shelf_arr[i];
+        shelf.style = "float:right";
+        c4.appendChild(image);
+        c4.appendChild(ac);
+        c4.appendChild(shelf);
+        li.appendChild(c4);
+        li.id = "";
+        c++;
+      }
+      // var listelem = document.createElement("div");
+      // listelem.className = "list-group-item";
+      // var griddiv = document.createElement("div");
+      // griddiv.className = "col-xs-6";
+      // griddiv.appendChild(image);
+      // listelem.appendChild(griddiv);
+      // mul.appendChild(listelem);
+    }
+  }
+  setTimeout(function(){window.print();},1000);
 }
