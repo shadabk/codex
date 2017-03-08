@@ -21,7 +21,7 @@ function add_student_to_db(mis,name,year,branch,email,contact){
       });
     }
     else{
-      console.log("Student added");
+      alert("This MIS is already registered");
     }
   });
 

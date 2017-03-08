@@ -3,10 +3,12 @@ function fetch_data_from_isbn(isbn_input){
   var isbn = require('node-isbn');
   isbn.resolve(isbn_input, function (err, book) {
     if (err) {
-        console.log('Book not found', err);
+      alert("This ISBN is not in the database, Please add the info manually");
+      console.log('Book not found', err);
     }
     else {
-        console.log('Book found ', book);
+      alert("Book Found");
+      console.log('Book found ', book);
     }
     document.getElementById('isbn').value = isbn_input ;
     document.getElementById('title').value = book.title ;

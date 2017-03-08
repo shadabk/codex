@@ -5,12 +5,18 @@ var issue = mongoose.model('issue', issueSchema);
 
 function fetch_student_data(mis){
   student.find({mis:mis}, function(err, users) {
-    if (err) throw err;
+  if (err){
+    alert("MIS invalid")
+    throw err;
+  }
 
     else{
       // console.log(users[0].name);
       issue.find({mis:mis}, function(err, books_under_this_mis) {
-      if (err) throw err;
+        if (err) {
+          alert("thisone");
+          throw err;
+        }
       else {
           console.log(books_under_this_mis.length);
       }
@@ -46,6 +52,8 @@ function issue_book(mis, ac_no){
               });
               temp.save(function (err) {
                 if (err) {
+                  // window.alert("Please check the account number");
+                  alert("This Book is already issued, Please check the account number of the book");
                   Object.keys(err.errors).forEach(function(key) {
                     var message = err.errors[key].message;
                     console.log('Validation error for "%s": %s', key, message);
@@ -54,6 +62,7 @@ function issue_book(mis, ac_no){
                 }
                 else{
                   console.log("Book issued");
+                  alert("Book issued"); 
                 }
               });
             }

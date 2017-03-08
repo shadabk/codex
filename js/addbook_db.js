@@ -45,6 +45,7 @@ function add_book_to_db(ac_no, isbn, title, author, publication, publication_pla
       });
       temp.save(function (err) {
         if (err) {
+          alert("This account number already exists")
           Object.keys(err.errors).forEach(function(key) {
             var message = err.errors[key].message;
             console.log('Validation error for "%s": %s', key, message);
@@ -52,6 +53,7 @@ function add_book_to_db(ac_no, isbn, title, author, publication, publication_pla
           });
         }
         else{
+          alert("Book has been added Successfully");
           console.log("book added");
         }
       });

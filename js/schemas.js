@@ -24,12 +24,12 @@ var studentSchema = mongoose.Schema({
     name : {type : String, required : true},
     year : {type : String, required : true},
     branch : {type : String, required : true},
-    email : {type : String, required : true},
-    contact : {type : String, required : true}
+    email : {type : String, required : true, unique : true},
+    contact : {type : String, required : true, unique : true}
 });
 
 var issueSchema = mongoose.Schema({
-    book_ac_no : {type : Number, required : true},
+    book_ac_no : {type : Number, required : true, unique:true},
     mis : {type : String, required : true},
     date_of_issue : {type : Date, default : Date.now},
     date_of_return : {type : Date, required : true}
