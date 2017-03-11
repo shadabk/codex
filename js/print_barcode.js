@@ -1,6 +1,7 @@
 var bc_arr = [];
 var shelf_arr = [];
 var book = mongoose.model('book', BookSchema);
+var account = mongoose.model('account', accountSchema);
 
 // adds accountnumber to a js array.
 // on pressing print, all elements in array > 0 are used.
@@ -11,7 +12,7 @@ function add_to_list() {
     document.getElementById("acc_to_add").value = "";
     return;
   }
-  book.find({accountnumber: acc_no}, function(err, res) {
+  account.find({account_number: acc_no}, function(err, res) {
     if (err) throw err;
     console.log(res);
     if(res.length == 0){
@@ -21,9 +22,12 @@ function add_to_list() {
     }
     else{
       bc_arr.push(acc_no);
-      shelf_arr.push(res[0]["shelf"]);
-      console.log(bc_arr);
-      ref_bars(res[0]["title"]);
+      book.find({isbn:res[0]["isbn"]}, function(err, res2) {
+        if (err) throw err;
+        shelf_arr.push(res2[0]["shelf"]);
+        console.log(bc_arr);
+        ref_bars(res2[0]["title"]);
+      });
     }
   });
 }
@@ -69,45 +73,6 @@ function ref_bars(title) {
     row.appendChild(csm);
     bcPage.appendChild(row);
 }
-//
-// function send_to_print(){
-//   var dd = {
-//     content: [
-//       {
-//         table: {
-//           body: [
-//
-//           ]
-//         }
-//       }
-//     ],
-//     // a string or { width: number, height: number }
-//     pageSize: 'A4',
-//     // by default we use portrait, you can change it to landscape if you wish
-//     pageOrientation: 'portrait',
-//     // [left, top, right, bottom] or [horizontal, vertical] or just a number for equal margins
-//     pageMargins: [ 40, 60, 40, 60 ],
-//   }
-//   var pos = 0;
-//   for (var i = 0; i < bc_arr.length; i++) {
-//     if (bc_arr[i] != -1) {
-//       pos++;
-//       book.find({accountnumber: bc_arr[i]}, function(err, res) {
-//         if (err) throw err;
-//         // console.log("print "+res);
-//         data = res[0]["bc_enc"];
-//         if(pos % 2 != 0){
-//           dd.content[0].table.body.push([{image: data, width: 150}]);
-//         }
-//         else{
-//           dd.content[0].table.body[this.length-1].push([{image: data, width: 150}]);
-//         }
-//         // dd.content.push({image: data, width: 150});
-//       });
-//     }
-//   }
-//   setTimeout(function(){console.log(dd);},1000);
-// }
 
 function send_to_print(){
   localStorage.setItem("bcArr", bc_arr);
@@ -188,13 +153,6 @@ function loadimages(){
         li.id = "";
         c++;
       }
-      // var listelem = document.createElement("div");
-      // listelem.className = "list-group-item";
-      // var griddiv = document.createElement("div");
-      // griddiv.className = "col-xs-6";
-      // griddiv.appendChild(image);
-      // listelem.appendChild(griddiv);
-      // mul.appendChild(listelem);
     }
   }
   setTimeout(function(){window.print();},1000);

@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 // Now we will convert this schema to model
 var issue = mongoose.model('issue', issueSchema);
-
+var student = mongoose.model('student', studentSchema);
 function fetch_student_data(mis){
   student.find({mis:mis}, function(err, users) {
   if (err){
@@ -62,7 +62,7 @@ function issue_book(mis, ac_no){
                 }
                 else{
                   console.log("Book issued");
-                  alert("Book issued"); 
+                  alert("Book issued");
                 }
               });
             }

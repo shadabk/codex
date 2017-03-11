@@ -1,8 +1,7 @@
 var mongoose = require("mongoose");
 
 var BookSchema = mongoose.Schema({
-    accountnumber : {type : Number, required : true, unique: true, index: true},
-    isbn : {type : String, required : true},
+    isbn : {type : String, required : true, unique: true},
     title : {type : String, required : true},
     author : {type : String, required : true},
     publication : {type : String, required : true},
@@ -15,8 +14,13 @@ var BookSchema = mongoose.Schema({
     page_count : {type : String},
     language : {type : String, default : "English"},
     shelf : {type : String},
-    price : {type : Number, required : true},
-    bc_enc : {type: String}
+    price : {type : Number, required : true}
+});
+
+var accountSchema = mongoose.Schema({
+  account_number : {type : Number, required : true, unique: true, index: true},
+  isbn : {type : String, required : true},
+  bc_enc : {type: String}
 });
 
 var studentSchema = mongoose.Schema({
