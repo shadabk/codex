@@ -2,27 +2,28 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Issue book</title>
+    <title>Return book</title>
     <!-- include bootstrap css -->
     <link rel="stylesheet" href="./bs/dist/css/bootstrap.min.css">
   </head>
   <script src="js/schemas.js"></script>
-  <!-- <script src="js/frontend.js"></script> -->
-  <!-- <script src="js/addbook_db.js"></script> -->
-  <!-- <script src="js/add_student.js"></script> -->
+  <script src="js/frontend.js"></script>
+  <script src="js/addbook_db.js"></script>
+  <script src="js/add_student.js"></script>
   <script src="js/issue_book.js"></script>
+  <script src="js/return.js"></script>
 
   <body>
     <nav class="nav nav-pills">
       <a class="nav-link" href="./index.html">Add a book</a>
       <a class="nav-link" href="./bc_print.html">Print barcodes</a>
-      <a class="nav-link active" href="./issue.html">Issue</a>
-      <a class="nav-link " href="./return.html">Return</a>
+      <a class="nav-link" href="./issue.html">Issue</a>
+      <a class="nav-link active" href="./return.html">Return</a>
       <a class="nav-link" href="./add_student.html">Students</a>
     </nav>
     <div class="container">
       <div style="margin:20px;">
-          <h1>Add new book to the database.</h1>
+          <h1>Book Return</h1>
       </div>
       <form class="new_book" method="post">
         <form class="form-inline">
@@ -30,7 +31,7 @@
             <label for="mis" class="sr-only">MIS</label>
             <input type="text" class="form-control" id="mis_input" placeholder="MIS">
             <div class="btn-group">
-              <button id = "fetch_btn"onclick="fetch_student_data(document.getElementById('mis_input').value)"type="button" class="btn btn-secondary">Fetch</button>
+              <button id = "fetch_btn"onclick="fetch_student_data2(document.getElementById('mis_input').value)"type="button" class="btn btn-secondary">Fetch</button>
             </div>
           </div>
         </form>
@@ -38,18 +39,20 @@
         <p type="text" name="name" class="form-control" value="" placeholder="name" id = "student_name">Name</p>
         <p type="text" name="year" class="form-control" value="" placeholder="year" id = "year">Year</p>
         <p type="text" name="branch" class="form-control" value="" placeholder="branch" id = "branch">Branch</p>
-        <p type="text" name="book issued" class="form-control" value="" placeholder="book issued" id = "books_issued">Books Issued</p>
-
-        <input type="text" class="form-control" id="ac_no" placeholder="Account Number of the Book">
-        <button type="button" onclick="issue_book(document.getElementById('mis_input').value,
-                                                  document.getElementById('ac_no').value)" class="btn btn-primary btn-lg">Issue</button>
+        <div id = "dynamic_book_issued">
+          <p>These are the books issued under this MIS :</p>
+            <!-- The books already issued will be displayed here dynamically -->
+        </div>
+        <input type="text" class="form-control" id="ac_no" placeholder="Account Number of the Book to be returned">
+        <button type="button" onclick="return_book(document.getElementById('mis_input').value,
+                                                  document.getElementById('ac_no').value)" class="btn btn-primary btn-lg">return</button>
       </form>
     </div>
     <!-- All of the Node.js APIs are available in this renderer process. -->
 
 
     <!-- include bootstrap js -->
-    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="./bs/dist/js/bootstrap.min.js"></script>
   </body>
   <script>

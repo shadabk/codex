@@ -3,6 +3,8 @@ var mongoose = require('mongoose');
 // Now we will convert this schema to model
 var issue = mongoose.model('issue', issueSchema);
 var student = mongoose.model('student', studentSchema);
+var accounts = mongoose.model('accounts', accountSchema);
+
 function fetch_student_data(mis){
   student.find({mis:mis}, function(err, users) {
   if (err){
@@ -19,6 +21,9 @@ function fetch_student_data(mis){
         }
       else {
           console.log(books_under_this_mis.length);
+          if(books_under_this_mis.length >= 2){
+            alert("This Mis already has "+books_under_this_mis.length+" books")
+          }
       }
     });
       document.getElementById('mis').innerHTML = users[0].mis ;
@@ -40,10 +45,10 @@ function issue_book(mis, ac_no){
             // console.log(d);
           }
 
-          book.find({accountnumber : ac_no}, function(err, book) {
+          accounts.find({account_number : ac_no}, function(err, book) {
             if (err) throw err;
             else{
-              console.log(book[0].title);
+              console.log(book[0].isbn);
               var temp = new issue({
                 book_ac_no : ac_no,
                 mis : mis,
