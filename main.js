@@ -15,12 +15,21 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
 
-  // and load the index.html of the app.
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }))
+  const ses = mainWindow.webContents.session
+  ses.setProxy({
+    proxyRules: "http=10.1.101.150:3128;https=10.1.101.150:3128;"
+  }, function(){
+    console.log("proxy set?");
+
+    mainWindow.loadURL(url.format({
+      pathname: path.join(__dirname, 'index.html'),
+      protocol: 'file:',
+      slashes: true
+    }))
+
+  })
+
+
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
@@ -55,6 +64,12 @@ app.on('activate', function () {
     createWindow()
   }
 })
+
+app.on('login', function (event, webContents, request, authInfo, callback) {
+    event.preventDefault();
+    console.log("here?");
+    callback('111403071', '');
+});
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
