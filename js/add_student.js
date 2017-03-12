@@ -17,11 +17,12 @@ function add_student_to_db(mis,name,year,branch,email,contact){
       Object.keys(err.errors).forEach(function(key) {
         var message = err.errors[key].message;
         console.log('Validation error for "%s": %s', key, message);
+        alert("Already registered")
         // console.error(err);
       });
     }
     else{
-      alert("This MIS is already registered");
+      alert("Student Added");
     }
   });
 

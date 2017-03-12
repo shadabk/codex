@@ -38,3 +38,10 @@ var issueSchema = mongoose.Schema({
     date_of_issue : {type : Date, default : Date.now},
     date_of_return : {type : Date, required : true}
 });
+
+var permanent_issueSchema = mongoose.Schema({
+    book_ac_no : {type : Number, required : true},
+    mis : {type : String, required : true},
+    date_of_issue : {type : Date},
+    date_of_return : {type : Date}
+});
