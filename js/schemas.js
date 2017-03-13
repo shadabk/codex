@@ -29,7 +29,8 @@ var studentSchema = mongoose.Schema({
     year : {type : String, required : true},
     branch : {type : String, required : true},
     email : {type : String, required : true, unique : true},
-    contact : {type : String, required : true, unique : true}
+    contact : {type : String, required : true, unique : true},
+    fine: {type : Number, default : 0}
 });
 
 var issueSchema = mongoose.Schema({

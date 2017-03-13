@@ -1,7 +1,12 @@
+//TODO : fetch issue details (when issued, when to return)
+//TODO : book return button on list of issued books
+//TODO : 
+//TODO :
+
 function fetch_student_data2(mis){
   student.find({mis:mis}, function(err, users) {
   if (err){
-    alert("MIS invalid")
+    alert("MIS invalid");
     throw err;
   }
 
@@ -25,7 +30,8 @@ function fetch_student_data2(mis){
                 if(books_under_this_mis.length > 0){
                   var div_id = document.getElementById("dynamic_book_issued");
                   var para = document.createElement("P");
-                  var b_issued = []
+                  para.className = "list-group-item list-group-item-info";
+                  var b_issued = [];
                   var i = 0;
                   for(i = 0 ; i < books_under_this_mis.length; i++){
                       // console.log(i);
@@ -49,7 +55,7 @@ function fetch_student_data2(mis){
                   div_id.appendChild(para);
                 }
                 else {
-                  alert("No books issued")
+                  alert("No books issued");
                 }
               }
         }
@@ -60,7 +66,9 @@ function fetch_student_data2(mis){
 }
 
 //
-function return_book(mis,ac_no){
+function return_book(){
+  var mis = document.getElementById('mis_input').value;
+  var ac_no = document.getElementById('ac_no').value;
   var flag = 0;
   /* Check if the ac_no entered is actually issued to this mis or not */
   issue.find({mis:mis}, function(err, books_under_this_mis) {
@@ -116,7 +124,8 @@ function return_book(mis,ac_no){
             });
         }
       }
-      if(flag == 0)alert("No book with the given ac_no against this mis")
+      if(flag === 0)
+        alert("No book with the given ac_no against this mis");
     }
   });
 }

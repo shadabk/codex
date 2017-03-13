@@ -16,8 +16,7 @@
     <nav class="nav nav-pills">
       <a class="nav-link" href="./index.html">Add a book</a>
       <a class="nav-link " href="./bc_print.html">Print barcodes</a>
-      <a class="nav-link " href="./issue.html">Issue</a>
-      <a class="nav-link " href="./return.html">Return</a>
+      <a class="nav-link " href="./return.html">Issue/Return</a>
       <a class="nav-link active" href="./add_student.html">Students</a>
     </nav>
     <div class="container">
@@ -33,12 +32,7 @@
         <input type="text" name="email" class="form-control" value="" placeholder="email" id = "email">
         <input type="text" name="contact" class="form-control" value="" placeholder="contact" id = "contact">
 
-        <button onclick="add_student_to_db(document.getElementById('mis').value,
-                                        document.getElementById('student_name').value,
-                                        document.getElementById('year').value,
-                                        document.getElementById('branch').value,
-                                        document.getElementById('contact').value,
-                                        document.getElementById('email').value)"
+        <button onclick="add_student_to_db()"
       type="button" class="btn btn-primary btn-lg">Add</button>
       </form>
     </div>

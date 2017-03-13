@@ -3,14 +3,21 @@ var mongoose = require('mongoose');
 // Now we will convert this schema to model
 var student = mongoose.model('student', studentSchema);
 
-function add_student_to_db(mis,name,year,branch,email,contact){
+function add_student_to_db(){
+  var mis = document.getElementById('mis');
+  var name = document.getElementById('student_name');
+  var year = document.getElementById('year');
+  var branch = document.getElementById('branch');
+  var contact = document.getElementById('contact');
+  var email = document.getElementById('email');
+
   var temp = new student({
-    mis : mis,
-    name : name,
-    year : year,
-    branch : branch,
-    email : email,
-    contact : contact
+    mis : mis.value,
+    name : name.value,
+    year : year.value,
+    branch : branch.value,
+    email : email.value,
+    contact : contact.value
   });
   temp.save(function (err) {
     if (err) {
@@ -23,6 +30,12 @@ function add_student_to_db(mis,name,year,branch,email,contact){
     }
     else{
       alert("Student Added");
+      mis.value = "";
+      name.value = "";
+      year.value = "";
+      branch.value = "";
+      email.value = "";
+      contact.value= "";
     }
   });
 

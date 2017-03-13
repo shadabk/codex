@@ -5,14 +5,14 @@ var issue = mongoose.model('issue', issueSchema);
 var student = mongoose.model('student', studentSchema);
 var accounts = mongoose.model('accounts', accountSchema);
 
-function fetch_student_data(mis){
+function fetch_student_data(){
+  var mis = document.getElementById('mis_input').value;
   student.find({mis:mis}, function(err, users) {
   if (err){
-    alert("MIS invalid")
+    alert("MIS invalid");
     throw err;
   }
-
-    else{
+  else{
       // console.log(users[0].name);
       issue.find({mis:mis}, function(err, books_under_this_mis) {
         if (err) {
@@ -22,7 +22,7 @@ function fetch_student_data(mis){
       else {
           console.log(books_under_this_mis.length);
           if(books_under_this_mis.length >= 2){
-            alert("This Mis already has "+books_under_this_mis.length+" books")
+            alert("This Mis already has "+books_under_this_mis.length+" books");
           }
       }
     });
@@ -35,12 +35,15 @@ function fetch_student_data(mis){
   });
 }
 
-function issue_book(mis, ac_no){
+function issue_book(){
+  var mis = document.getElementById('mis_input').value;
+  var ac_no = document.getElementById('ac_no').value;
+
     // check if the book ac_no is valid
       var return_date;
       {
           {
-            var return_date = new Date();
+            return_date = new Date();
             return_date.setMonth(return_date.getMonth() + 2);
             // console.log(d);
           }
