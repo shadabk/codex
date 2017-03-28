@@ -1,9 +1,17 @@
 //TODO : fetch issue details (when issued, when to return)
 //TODO : book return button on list of issued books
-//TODO : 
+//TODO :
 //TODO :
 
+var book = mongoose.model('book', BookSchema);
+var account = mongoose.model('account', accountSchema);
+// var issue = mongoose.model('issue', issueSchema);
+
 function fetch_student_data2(mis){
+  var books_table = document.getElementById("books_table");
+  while(books_table.rows.length>1){
+    books_table.deleteRow(1);
+  }
   student.find({mis:mis}, function(err, users) {
   if (err){
     alert("MIS invalid");
@@ -28,31 +36,41 @@ function fetch_student_data2(mis){
 
               {
                 if(books_under_this_mis.length > 0){
-                  var div_id = document.getElementById("dynamic_book_issued");
-                  var para = document.createElement("P");
-                  para.className = "list-group-item list-group-item-info";
+                  var books_table = document.getElementById("books_table");
                   var b_issued = [];
                   var i = 0;
                   for(i = 0 ; i < books_under_this_mis.length; i++){
                       // console.log(i);
                       account.find({account_number : books_under_this_mis[i].book_ac_no}, function(err, ans) {
+                        var row = books_table.insertRow(1);
                           if (err) throw err;
                           else{
-                            {
                               book.find({isbn : ans[0].isbn}, function(err, val) {
                                 if (err) throw err;
                                 else{
-                                  var br = document.createElement("br");
-                                  b_issued[i] = document.createTextNode("Account Number : "+ans[0].account_number+", Title : "+val[0].title+", Author : "+val[0].author);
-                                  para.appendChild(b_issued[i]);
-                                  para.appendChild(br);
+                                  var c1 = row.insertCell();
+                                  var c2 = row.insertCell();
+                                  c1.innerHTML = val[0].title;
+                                  c2.innerHTML = val[0].author;
+                                  issue.find({book_ac_no: ans[0].account_number}, function(err, val){
+                                    var c3 = row.insertCell();
+                                    var c4 = row.insertCell();
+                                    c3.innerHTML = val[0].date_of_issue.toISOString().split('T')[0];
+                                    c4.innerHTML = val[0].date_of_return.toISOString().split('T')[0];
+                                    var c0 = row.insertCell(0);
+                                    var c5 = row.insertCell();
+                                    c0.innerHTML = ans[0].account_number;
+                                    c5.innerHTML = "x";
+                                    c0.addEventListener("click", function() {
+                                      return_book(c0.innerHTML);
+                                    });
+                                  });
+
                                 }
                               });
-                            }
                           }
                       });
                    }
-                  div_id.appendChild(para);
                 }
                 else {
                   alert("No books issued");
@@ -66,9 +84,9 @@ function fetch_student_data2(mis){
 }
 
 //
-function return_book(){
+function return_book(ac_no){
   var mis = document.getElementById('mis_input').value;
-  var ac_no = document.getElementById('ac_no').value;
+  // var ac_no = document.getElementById('ac_no').value;
   var flag = 0;
   /* Check if the ac_no entered is actually issued to this mis or not */
   issue.find({mis:mis}, function(err, books_under_this_mis) {
@@ -128,4 +146,5 @@ function return_book(){
         alert("No book with the given ac_no against this mis");
     }
   });
+  fetch_student_data2(mis);
 }

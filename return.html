@@ -6,6 +6,7 @@
     <!-- include bootstrap css -->
     <link rel="stylesheet" href="./bs/dist/css/bootstrap.min.css">
   </head>
+
   <script src="js/schemas.js"></script>
   <script src="js/frontend.js"></script>
   <script src="js/addbook_db.js"></script>
@@ -42,9 +43,6 @@
             <p type="text" name="branch" class="list-group-item list-group-item-success" value="" placeholder="branch" id = "branch">Branch</p>
             <br>
             <p>Books issued:</p>
-            <div id = "dynamic_book_issued">
-              <!-- The books already issued will be displayed here dynamically -->
-            </div>
           </form>
         </div>
         <div class="col">
@@ -52,19 +50,35 @@
             <input type="text" class="form-control" id="ac_no" placeholder="Account Number of the Book to issue">
             <button type="button" onclick="issue_book()" class="btn btn-primary">Issue</button>
           </form>
-          <form>
-            <input type="text" class="form-control" id="ac_no" placeholder="Account Number of the Book to be returned">
-            <button type="button" onclick="return_book()" class="btn btn-primary">Return</button>
-          </form>
         </div>
       </div>
+      <div id = "dynamic_book_issued">
+              <!-- The books already issued will be displayed here dynamically -->
+              <table class="table" id="books_table">
+                <thead>
+                  <tr>
+                    <th>AN</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Issue date</th>
+                    <th>Return date</th>
+                    <th>x</th>
+                  </tr>
+                </thead>
+                <tbody id="books_table_body">
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
     </div>
     <!-- All of the Node.js APIs are available in this renderer process. -->
 
 
     <!-- include bootstrap js -->
-    <script src="js/jquery-3.1.1.min.js"></script>
     <script src="./bs/dist/js/bootstrap.min.js"></script>
+      <script src="js/jquery-3.1.1.min.js"></script>
   </body>
   <script>
     // You can also require other files to run in this process

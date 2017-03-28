@@ -69,6 +69,7 @@ function issue_book(){
                   });
                 }
                 else{
+                  fetch_student_data2(mis);
                   console.log("Book issued");
                   alert("Book issued");
                 }
