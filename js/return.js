@@ -146,5 +146,5 @@ function return_book(ac_no){
         alert("No book with the given ac_no against this mis");
     }
   });
-  fetch_student_data2(mis);
+  fetch_student_data2(mis); 
 }

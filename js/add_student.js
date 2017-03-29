@@ -30,12 +30,7 @@ function add_student_to_db(){
     }
     else{
       alert("Student Added");
-      mis.value = "";
-      name.value = "";
-      year.value = "";
-      branch.value = "";
-      email.value = "";
-      contact.value= "";
+      location.reload();
     }
   });
 

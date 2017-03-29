@@ -17,6 +17,8 @@ var BookSchema = mongoose.Schema({
     price : {type : Number, required : true}
 });
 
+BookSchema.index({title: "text", author: "text"});
+
 var accountSchema = mongoose.Schema({
   account_number : {type : Number, required : true, unique: true, index: true},
   isbn : {type : String, required : true},

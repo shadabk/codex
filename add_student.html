@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Issue book</title>
+    <title>Codex</title>
     <!-- include bootstrap css -->
     <link rel="stylesheet" href="./bs/dist/css/bootstrap.min.css">
   </head>
@@ -15,9 +15,10 @@
   <body>
     <nav class="nav nav-pills">
       <a class="nav-link" href="./index.html">Add a book</a>
-      <a class="nav-link " href="./bc_print.html">Print barcodes</a>
+      <a class="nav-link" href="./bc_print.html">Print barcodes</a>
       <a class="nav-link " href="./return.html">Issue/Return</a>
       <a class="nav-link active" href="./add_student.html">Students</a>
+      <a class="nav-link" href="./book_search.html">Book Search</a>
     </nav>
     <div class="container">
       <div style="margin:20px;">
@@ -25,7 +26,7 @@
       </div>
       <form class="new_book" method="post">
 
-        <input type="text" name="MIS" class="form-control" value="" placeholder="MIS" id = "mis">
+        <input type="text" name="MIS" class="form-control" value="" placeholder="MIS" id = "mis" autofocus="autofocus">
         <input type="text" name="name" class="form-control" value="" placeholder="name" id = "student_name">
         <input type="text" name="year" class="form-control" value="" placeholder="year" id = "year">
         <input type="text" name="branch" class="form-control" value="" placeholder="branch" id = "branch">

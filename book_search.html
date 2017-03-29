@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Codex</title>
+    <!-- include bootstrap css -->
+    <link rel="stylesheet" href="./bs/dist/css/bootstrap.min.css">
+  </head>
+  <script src="js/schemas.js"></script>
+  <script type="text/javascript" src="./js/bookSearch.js">  </script>
+  <body>
+    <nav class="nav nav-pills">
+      <a class="nav-link" href="./index.html">Add a book</a>
+      <a class="nav-link" href="./bc_print.html">Print barcodes</a>
+      <a class="nav-link " href="./return.html">Issue/Return</a>
+      <a class="nav-link" href="./add_student.html">Students</a>
+      <a class="nav-link active" href="./book_search.html">Book Search</a>
+    </nav>
+    <div class="container">
+      <div class="container-fluid" style="margin:20px;">
+        <div style="margin:20px;">
+          <h3>Search books:</h3>
+        </div>
+
+
+        <form class="form-inline">
+          <div class="form-group">
+            <!-- <label for="exampleInputName2">Name</label> -->
+            <input type="text" name="search_title" value="" id="search_title" autofocus="autofocus" placeholder="Title" class="form-control">
+          </div>
+          <div class="form-group">
+            <!-- <label for="exampleInputEmail2">Email</label> -->
+            <input type="text" name="search_author" value="" id="search_author" autofocus="autofocus" placeholder="Author" class="form-control">
+          </div>
+          <button type="button" class="btn btn-success" onclick="searchBook()" >Search</button>
+        </form>
+
+
+      </div>
+      <div class="container" id="search_results">
+          <!-- rows will get added here dynamically -->
+          <table class="table" id="sr_table">
+            <thead>
+              <tr>
+                <th>AN</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Shelf</th>
+                <th>Status</th>
+                <th>Return date</th>
+                <th>Issued by</th>
+              </tr>
+            </thead>
+            <tbody id="books_table_body">
+              <tr>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+    <!-- include bootstrap js -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="./bs/dist/js/bootstrap.min.js"></script>
+  </body>
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+</html>
