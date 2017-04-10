@@ -38,10 +38,10 @@
                 </div>
               </div>
             </form>
-            <p type="text" name="MIS" class="list-group-item list-group-item-success" value="" placeholder="MIS" id = "mis">MIS</p>
-            <p type="text" name="name" class="list-group-item list-group-item-success" value="" placeholder="name" id = "student_name">Name</p>
-            <p type="text" name="year" class="list-group-item list-group-item-success" value="" placeholder="year" id = "year">Year</p>
-            <p type="text" name="branch" class="list-group-item list-group-item-success" value="" placeholder="branch" id = "branch">Branch</p>
+            <p type="text" name="MIS" class="list-group-item list-group-item-success" value="" placeholder="MIS">MIS :<span id="mis"></span></p>
+            <p type="text" name="name" class="list-group-item list-group-item-success" value="" placeholder="name" >Name :<span id="student_name"></span></p>
+            <p type="text" name="year" class="list-group-item list-group-item-success" value="" placeholder="year" >Year :<span id="year"></span></p>
+            <p type="text" name="branch" class="list-group-item list-group-item-success" value="" placeholder="branch" >Branch :<span id="branch"></span></p>
             <br>
             <p>Books issued:</p>
           </form>
@@ -49,8 +49,13 @@
         <div class="col">
           <form class="form-group">
             <input type="text" class="form-control" id="ac_no" placeholder="Account Number of the Book to issue">
+            <button type="button" onclick="fetch_book()" class="btn btn-secondary">Fetch</button>
             <button type="button" onclick="issue_book()" class="btn btn-primary">Issue</button>
           </form>
+          <p type="text" class="list-group-item list-group-item-success" value="" > Account Number :<span id = "an"></span></p>
+          <p type="text" class="list-group-item list-group-item-success" value="" >Title :<span id = "title"></span></p>
+          <p type="text" class="list-group-item list-group-item-success" value="" >Author :<span id = "author"></span></p>
+          <p type="text" class="list-group-item list-group-item-success" value="" >Shelf :<span id = "shelf"></span></p>
         </div>
       </div>
       <div id = "dynamic_book_issued">

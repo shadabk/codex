@@ -83,6 +83,24 @@ function fetch_student_data2(mis){
   });
 }
 
+function fetch_book(mis){
+
+  var an = document.getElementById("an");
+  var title = document.getElementById("title");
+  var author = document.getElementById("author");
+  var shelf = document.getElementById("shelf");
+  var input_an = document.getElementById("ac_no").value;
+
+  account.find({account_number: input_an}, function(err, data){
+    an.innerHTML = input_an;
+    book.find({isbn: data[0].isbn}, function(err, data2){
+      title.innerHTML = data2[0].title;
+      author.innerHTML = data2[0].author;
+      shelf.innerHTML = data2[0].shelf;
+    });
+  });
+}
+
 //
 function return_book(ac_no){
   var mis = document.getElementById('mis_input').value;
@@ -146,5 +164,5 @@ function return_book(ac_no){
         alert("No book with the given ac_no against this mis");
     }
   });
-  fetch_student_data2(mis); 
+  fetch_student_data2(mis);
 }
