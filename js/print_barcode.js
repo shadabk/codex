@@ -82,41 +82,6 @@ function send_to_print(){
 	win.loadURL(`file://${__dirname}/bill_temp.html`);
 }
 
-function backup(){
-    var backup = require('mongodb-backup')
-    /*
-   *  use
-   */
-    backup({
-      uri: 'mongodb://localhost/codex_test1', // mongodb://<dbuser>:<dbpassword>@<dbdomain>.mongolab.com:<dbport>/<dbdatabase>
-      root: 'dump/', // write files into this dir
-      callback: function(err) {
-        if (err) {
-          console.error(err);
-        } else {
-          alert("Backup Success")
-          console.log('finish');
-        }
-      }
-    });
-}
-
-function restore_db(){
-  var restore = require('mongodb-restore');
-  restore({
-    uri: 'mongodb://localhost/codex_test1', // mongodb://<dbuser>:<dbpassword>@<dbdomain>.mongolab.com:<dbport>/<dbdatabase>
-      root: 'dump/codex_test1',
-    callback: function(err) {
-      if (err) {
-        console.error(err);
-      } else {
-        alert("Restored")
-        console.log('finish');
-      }
-    }
-  });
-}
-
 function loadimages(){
   // console.log("bc_arr "+localStorage.getItem("var1"));
   var bc_arr = localStorage.getItem("bcArr");

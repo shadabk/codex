@@ -7,24 +7,23 @@
     <link rel="stylesheet" href="./bs/dist/css/bootstrap.min.css">
   </head>
   <script src="js/schemas.js"></script>
-  <script type="text/javascript" src="./js/print_barcode.js">  </script>
+  <script type="text/javascript" src="./js/backup_restore.js">  </script>
   <body>
     <nav class="nav nav-pills">
       <a class="nav-link" href="./index.html">Add a book</a>
-      <a class="nav-link active" href="./bc_print.html">Print barcodes</a>
+      <a class="nav-link " href="./bc_print.html">Print barcodes</a>
       <a class="nav-link " href="./return.html">Issue/Return</a>
       <a class="nav-link" href="./add_student.html">Students</a>
       <a class="nav-link" href="./book_search.html">Book Search</a>
-      <a class="nav-link" href="./backup_restore.html">Backup / Restore</a>
+      <a class="nav-link active" href="./backup_restore.html">Backup / Restore</a>
     </nav>
     <div class="container">
       <div class="container-fluid" style="margin:20px;">
         <div style="margin:20px;">
-          <h3>Print barcodes of books present in database.</h3>
+          <h3>Take a backup or restore the db</h3>
         </div>
-        <input type="text" name="acc_no" value="" id="acc_to_add">
-        <button type="button" class="btn btn-primary" onclick="add_to_list()">Add to list</button>
-        <button type="button" class="btn btn-success" onclick="send_to_print()" >Print</button>
+        <button type="button" class="btn btn-success" onclick="backup()" >Backup</button>
+        <button type="button" class="btn btn-success" onclick="restore_db()" >Restore</button>
       </div>
       <div class="container" id="bc_page">
           <!-- rows will get added here dynamically -->
