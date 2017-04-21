@@ -23,21 +23,26 @@
     </nav>
     <div class="container">
       <div style="margin:20px;">
-          <h1>Add new Student to the database.</h1>
       </div>
-      <form class="new_book" method="post">
+      <div class="row">
+        <div class="col">
+          <h2>Add new Student</h2>
+          <form class="new_book" method="post">
+            <input type="text" name="MIS" class="form-control" value="" placeholder="MIS" id = "mis" autofocus="autofocus">
+            <input type="text" name="name" class="form-control" value="" placeholder="name" id = "student_name">
+            <input type="text" name="year" class="form-control" value="" placeholder="year" id = "year">
+            <input type="text" name="branch" class="form-control" value="" placeholder="branch" id = "branch">
+            <input type="text" name="email" class="form-control" value="" placeholder="email" id = "email">
+            <input type="text" name="contact" class="form-control" value="" placeholder="contact" id = "contact">
 
+            <button onclick="add_student_to_db()"
+          type="button" class="btn btn-primary btn-lg">Add</button>
+         </form>
+       </div>
+      <div class="col">
+        <h2>Remove student</h2>
         <input type="text" name="MIS" class="form-control" value="" placeholder="MIS" id = "mis" autofocus="autofocus">
-        <input type="text" name="name" class="form-control" value="" placeholder="name" id = "student_name">
-        <input type="text" name="year" class="form-control" value="" placeholder="year" id = "year">
-        <input type="text" name="branch" class="form-control" value="" placeholder="branch" id = "branch">
-        <input type="text" name="email" class="form-control" value="" placeholder="email" id = "email">
-        <input type="text" name="contact" class="form-control" value="" placeholder="contact" id = "contact">
-
-        <button onclick="add_student_to_db()"
-      type="button" class="btn btn-primary btn-lg">Add</button>
-      </form>
-    </div>
+      </div>
     <!-- All of the Node.js APIs are available in this renderer process. -->
 
 
