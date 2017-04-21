@@ -20,6 +20,7 @@
       <a class="nav-link active" href="./add_student.html">Students</a>
       <a class="nav-link" href="./book_search.html">Book Search</a>
       <a class="nav-link" href="./backup_restore.html">Backup / Restore</a>
+      <a class="nav-link" href="./student_details.html">Student Details</a>
     </nav>
     <div class="container">
       <div style="margin:20px;">
@@ -30,8 +31,18 @@
           <form class="new_book" method="post">
             <input type="text" name="MIS" class="form-control" value="" placeholder="MIS" id = "mis" autofocus="autofocus">
             <input type="text" name="name" class="form-control" value="" placeholder="name" id = "student_name">
-            <input type="text" name="year" class="form-control" value="" placeholder="year" id = "year">
-            <input type="text" name="branch" class="form-control" value="" placeholder="branch" id = "branch">
+            <select class="form-control" name="year" id="year">
+              <option value="1">First Year</option>
+              <option value="2">Second Year</option>
+              <option value="3">Third Year</option>
+              <option value="4">Final Year</option>
+              <option value="5">M.Tech First Year</option>
+              <option value="6">M.Tech Second Year</option>
+            </select>
+            <select class="form-control" name="branch" id="branch">
+              <option value="comp">Computer</option>
+              <option value="it">Information Technology</option>
+            </select>
             <input type="text" name="email" class="form-control" value="" placeholder="email" id = "email">
             <input type="text" name="contact" class="form-control" value="" placeholder="contact" id = "contact">
 
